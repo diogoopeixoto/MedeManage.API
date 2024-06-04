@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\MediManage.API.props" />
+</Project>

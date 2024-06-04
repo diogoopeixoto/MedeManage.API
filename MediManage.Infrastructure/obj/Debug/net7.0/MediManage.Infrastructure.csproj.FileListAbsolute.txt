@@ -1,0 +1,17 @@
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Infrastructure\obj\Debug\net7.0\MediManage.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Infrastructure\obj\Debug\net7.0\MediManage.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Infrastructure\obj\Debug\net7.0\MediManage.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Infrastructure\obj\Debug\net7.0\MediManage.Infrastructure.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Infrastructure\obj\Debug\net7.0\MediManage.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Infrastructure\bin\Debug\net7.0\MediManage.Infrastructure.deps.json
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Infrastructure\bin\Debug\net7.0\MediManage.Infrastructure.runtimeconfig.json
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Infrastructure\bin\Debug\net7.0\MediManage.Infrastructure.dll
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Infrastructure\bin\Debug\net7.0\MediManage.Infrastructure.pdb
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Infrastructure\bin\Debug\net7.0\MediManage.Core.dll
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Infrastructure\bin\Debug\net7.0\MediManage.Core.pdb
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Infrastructure\obj\Debug\net7.0\MediManage.Infrastructure.csproj.CopyComplete
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Infrastructure\obj\Debug\net7.0\MediManage.Infrastructure.dll
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Infrastructure\obj\Debug\net7.0\refint\MediManage.Infrastructure.dll
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Infrastructure\obj\Debug\net7.0\MediManage.Infrastructure.pdb
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Infrastructure\obj\Debug\net7.0\MediManage.Infrastructure.genruntimeconfig.cache
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Infrastructure\obj\Debug\net7.0\ref\MediManage.Infrastructure.dll

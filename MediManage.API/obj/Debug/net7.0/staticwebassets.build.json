@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "WxQogm2BgWfxY68eCmDCBUsv9BqIFWcwXrlwpDG3JLU=",
+  "Source": "MediManage.API",
+  "BasePath": "_content/MediManage.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

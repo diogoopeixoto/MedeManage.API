@@ -1,0 +1,14 @@
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Core\bin\Debug\net7.0\MediManage.Core.deps.json
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Core\bin\Debug\net7.0\MediManage.Core.runtimeconfig.json
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Core\bin\Debug\net7.0\MediManage.Core.dll
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Core\bin\Debug\net7.0\MediManage.Core.pdb
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Core\obj\Debug\net7.0\MediManage.Core.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Core\obj\Debug\net7.0\MediManage.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Core\obj\Debug\net7.0\MediManage.Core.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Core\obj\Debug\net7.0\MediManage.Core.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Core\obj\Debug\net7.0\MediManage.Core.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Core\obj\Debug\net7.0\MediManage.Core.dll
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Core\obj\Debug\net7.0\refint\MediManage.Core.dll
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Core\obj\Debug\net7.0\MediManage.Core.pdb
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Core\obj\Debug\net7.0\MediManage.Core.genruntimeconfig.cache
+C:\Users\Lenovo\Desktop\MENTORIA\MediManage\MediManage.Core\obj\Debug\net7.0\ref\MediManage.Core.dll

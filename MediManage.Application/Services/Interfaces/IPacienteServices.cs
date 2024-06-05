@@ -8,6 +8,7 @@ namespace MediManage.Application.Services.Interfaces
     {
         List<PacienteViewModel>GetAll(string query);
         PacienteDetalhesViewModel GetById(int id);
+        PacienteDetalhesViewModel GetByCPF(string cpf);
         int Create(NewPacienteImputModel inputModel);
         void Update(UpdatePacienteImputModel inputModel);
         void Delete(int id);       

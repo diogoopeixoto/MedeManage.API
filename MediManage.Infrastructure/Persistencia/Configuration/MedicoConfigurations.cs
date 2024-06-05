@@ -42,9 +42,9 @@ namespace MediManage.Infrastructure.Persistence.Configurations
                 .Property(m => m.TipoSanguineo)
                 .HasMaxLength(3);
 
-            builder
-                .Property(m => m.Endereco)
-                .HasMaxLength(200);
+            //builder
+            //    .Property(m => m.Endereco)
+            //    .HasMaxLength(200);
 
             builder
                 .Property(m => m.Especialidade)

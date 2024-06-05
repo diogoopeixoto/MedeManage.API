@@ -1,5 +1,4 @@
-﻿using MediManage.Core.Enum;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MediManage.Application.ViewModels
 {
-    public class PacienteViewModel
+    public class MedicoDetalhesViewModel
     {
-    
-        public PacienteViewModel(int id, string nome, string sobreNome, DateTime dataNascimento, string telefone, string email, string cPF, string tipoSanguineo, double altura, double peso, PacienteStatusEnum status, string cep, string logradouro, string bairro, string localidade, string uf, string numero)
+      
+        public MedicoDetalhesViewModel(int id, string nome, string sobreNome, DateTime dataNascimento, string telefone, string email, string cPF, string tipoSanguineo, string especialidade, string cRM, string cep, string logradouro, string bairro, string localidade, string uf, string numero)
         {
             Id = id;
             Nome = nome;
@@ -20,9 +19,8 @@ namespace MediManage.Application.ViewModels
             Email = email;
             CPF = cPF;
             TipoSanguineo = tipoSanguineo;
-            Altura = altura;
-            Peso = peso;
-            Status = status;
+            Especialidade = especialidade;
+            CRM = cRM;
             Cep = cep;
             Logradouro = logradouro;
             Bairro = bairro;
@@ -39,9 +37,8 @@ namespace MediManage.Application.ViewModels
         public string Email { get; set; }
         public string CPF { get; set; }
         public string TipoSanguineo { get; set; }
-        public double Altura { get; set; }
-        public double Peso { get; set; }
-        public PacienteStatusEnum Status { get; set; }
+        public string Especialidade { get; set; }
+        public string CRM { get; set; }
         public string Cep { get; set; }
         public string Logradouro { get; set; }
         public string Bairro { get; set; }

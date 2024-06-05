@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\MediManage.API",
+    "\\MediManage.Infrastructure",
+    "\\MediManage.Infrastructure\\Persistencia"
+  ],
+  "SelectedNode": "\\MediManage.API\\Program.cs",
+  "PreviewInSolutionExplorer": false
+}

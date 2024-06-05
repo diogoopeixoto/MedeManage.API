@@ -38,6 +38,20 @@ namespace MediManage.API.Controllers
             return Ok(paciente);
         }
 
+        // api/paciente/
+        [HttpGet("{cpf}/cpf")]
+        public IActionResult GetByCPF(string cpf)
+        {
+            var paciente = _pacienteServices.GetByCPF(cpf);
+
+            if (paciente == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(paciente);
+        }
+
         [HttpPost]
         public IActionResult Post([FromBody] NewPacienteImputModel inputModel)
         {

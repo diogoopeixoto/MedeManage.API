@@ -30,6 +30,7 @@ namespace MediManage.API
 
             builder.Services.AddScoped<IPacienteServices, PacienteServices>();
             builder.Services.AddScoped<IServicoServices, ServicoServices>();
+            builder.Services.AddScoped<IMedicoServices, MedicoServices>();
 
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

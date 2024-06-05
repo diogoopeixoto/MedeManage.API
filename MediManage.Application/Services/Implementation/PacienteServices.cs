@@ -21,8 +21,9 @@ namespace MediManage.Application.Services.Implementation
         {
             var pacientes = _dbContext.Pacientes;
             var pacienteViewModel = pacientes
-                .Select(p =>  new PacienteViewModel(p.Id, p.Nome, p.SobreNome,
-                p.CPF)).ToList();
+                .Select(p =>  new PacienteViewModel(p.Id, p.Nome, p.SobreNome, p.DataNascimento, p.Telefone,
+                p.Email, p.CPF, p.TipoSanguineo, p.Altura, p.Peso, p.Status,
+                p.Cep, p.Logradouro, p.Bairro, p.Localidade, p.Uf, p.Numero)).ToList();
             return pacienteViewModel;
         }
 
@@ -51,6 +52,30 @@ namespace MediManage.Application.Services.Implementation
             return pacienteDetalheViewModel;
         }
 
+        public PacienteDetalhesViewModel GetByCPF(string cpf)
+        {
+            // Busca o paciente pelo ID
+            var paciente = _dbContext.Pacientes
+                .SingleOrDefault(p => p.CPF == cpf);
+
+            if (paciente == null) return null;
+
+            // Cria e retorna o ViewModel com os detalhes do paciente
+            var pacienteDetalheViewModel = new PacienteDetalhesViewModel(
+                paciente.Id,
+                paciente.Nome,
+                paciente.SobreNome,
+                paciente.DataNascimento,
+                paciente.Telefone,
+                paciente.Email,
+                paciente.CPF,
+                paciente.TipoSanguineo,
+                paciente.Altura,
+                paciente.Peso,
+                paciente.Status);
+
+            return pacienteDetalheViewModel;
+        }
 
         public int Create(NewPacienteImputModel inputModel)
         {

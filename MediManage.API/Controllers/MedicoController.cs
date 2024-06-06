@@ -1,5 +1,6 @@
 ﻿using MediManage.Application.ImputModels;
 using MediManage.Application.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MediManage.API.Controllers
@@ -16,6 +17,7 @@ namespace MediManage.API.Controllers
 
         // api/medico?query=net core
         [HttpGet]
+        [Authorize(Roles = "medico, medico")]
             public IActionResult Get(string query)
             {
                 var medico = _medicoServices.GetAll(query);

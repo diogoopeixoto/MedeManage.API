@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MediManage.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class inital : Migration
+    public partial class AddUser : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -24,9 +24,15 @@ namespace MediManage.Infrastructure.Migrations
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     CPF = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
                     TipoSanguineo = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
-                    Endereco = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Especialidade = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    CRM = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
+                    CRM = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Status = table.Column<byte>(type: "tinyint", nullable: false),
+                    Cep = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Logradouro = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Bairro = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Localidade = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Uf = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Numero = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -48,7 +54,13 @@ namespace MediManage.Infrastructure.Migrations
                     TipoSanguineo = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
                     Altura = table.Column<double>(type: "float", nullable: false),
                     Peso = table.Column<double>(type: "float", nullable: false),
-                    Endereco = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                    Status = table.Column<byte>(type: "tinyint", nullable: false),
+                    Cep = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Logradouro = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Bairro = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Localidade = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Uf = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Numero = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,6 +82,25 @@ namespace MediManage.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Servicos", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Active = table.Column<bool>(type: "bit", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -130,6 +161,9 @@ namespace MediManage.Infrastructure.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Atendimentos");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Medicos");

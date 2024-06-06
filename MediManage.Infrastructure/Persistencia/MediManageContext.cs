@@ -14,6 +14,7 @@ namespace MediManage.Infrastructure.Persistence
         public DbSet<Atendimento> Atendimentos { get; set; }
         public DbSet<Medico> Medicos { get; set; }
         public DbSet<Servico> Servicos { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -27,5 +27,7 @@ namespace MediManage.Application.ImputModels
         public string Uf { get; set; }
         public string Numero { get; set; }
 
+        public string TanantId { get; set; }
+
     }
 }

@@ -24,7 +24,7 @@ namespace MediManage.Application.Commands.CriateUser
         {
             var passwordHash = _authService.ComputeSha256Hash(request.Password);
 
-            var user = new User(request.FullName, request.Email, request.BirthDate, passwordHash, request.Role);
+            var user = new User(request.FullName, request.Email, request.BirthDate, passwordHash, request.Role, request.TenantId);
 
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();

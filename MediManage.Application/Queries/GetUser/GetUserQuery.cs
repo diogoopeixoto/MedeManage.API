@@ -10,12 +10,15 @@ namespace MediManage.Application.Queries.GetUser
 {   
     public class GetUserQuery : IRequest<UserViewModel>
     {
-        public GetUserQuery(int id)
+        public GetUserQuery(int id, string tenantid)
         {
-            Id = id;
-        }
+            Id = id;            
+            TenantId = tenantid; 
+        }       
 
         public int Id { get; private set; }
+
+        public string TenantId { get; private set; }
     }
 }
 

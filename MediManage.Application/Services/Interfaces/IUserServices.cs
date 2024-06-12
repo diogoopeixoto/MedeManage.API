@@ -9,7 +9,7 @@ namespace MediManage.Application.Services.Interfaces
 {
     public interface IUserServices
     {
-        Task<User> GetByIdAsync(int id);
+        Task<User> GetByIdAsync(int id, string tenantId);
         Task<User> GetUserByEmailAndPasswordAsync(string email, string passwordHash);
     }
 }

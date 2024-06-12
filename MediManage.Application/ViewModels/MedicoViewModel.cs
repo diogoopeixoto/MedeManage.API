@@ -10,7 +10,9 @@ namespace MediManage.Application.ViewModels
     {
         public MedicoViewModel() { }
 
-        public MedicoViewModel(int id, string nome, string sobreNome, DateTime dataNascimento, string telefone, string email, string cPF, string tipoSanguineo, string especialidade, string cRM, string cep, string logradouro, string bairro, string localidade, string uf, string numero)
+        public MedicoViewModel(int id, string nome, string sobreNome, DateTime dataNascimento, string telefone, string email, 
+            string cPF, string tipoSanguineo, string especialidade, string cRM, string cep, string logradouro, string bairro, 
+            string localidade, string uf, string numero, string tenantId)
         {
             Id = id;
             Nome = nome;
@@ -28,7 +30,10 @@ namespace MediManage.Application.ViewModels
             Localidade = localidade;
             Uf = uf;
             Numero = numero;
+            TenantId = tenantId;
+
         }
+        
 
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -46,5 +51,6 @@ namespace MediManage.Application.ViewModels
         public string Localidade { get; set; }
         public string Uf { get; set; }
         public string Numero { get; set; }
+        public string TenantId { get; set; }
     }
 }

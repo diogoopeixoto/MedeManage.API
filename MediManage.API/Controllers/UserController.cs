@@ -4,6 +4,7 @@ using MediManage.Application.Commands.LoginUser;
 using MediManage.Application.Queries.GetUser;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace MediManage.API.Controllers
 {
@@ -17,11 +18,17 @@ namespace MediManage.API.Controllers
             _mediator = mediator;
         }
 
-        // api/users/1
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var query = new GetUserQuery(id);
+            string tenantId = User.Claims.FirstOrDefault(c => c.Type == "tenantId")?.Value;
+
+            if (string.IsNullOrEmpty(tenantId))
+            {
+                return Unauthorized("Tenant ID is missing");
+            }
+
+            var query = new GetUserQuery(id, tenantId);
 
             var user = await _mediator.Send(query);
 
@@ -32,6 +39,7 @@ namespace MediManage.API.Controllers
 
             return Ok(user);
         }
+
 
         // api/users
         [HttpPost]

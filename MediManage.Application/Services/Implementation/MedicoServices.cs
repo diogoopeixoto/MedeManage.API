@@ -20,13 +20,13 @@ namespace MediManage.Application.Services.Implementation
             _context = context;
         }
 
-        public List<MedicoViewModel> GetAll(string query)
+        public List<MedicoViewModel> GetAll(string tenantId, string query)
         {
-            var medico = _context.Medicos;
+            var medico = _context.Medicos.Where(m => m.TenantId == tenantId);
             var medicoViewModel = medico.Select(m => new MedicoViewModel (
                 m.Id, m.Nome, m.SobreNome, m.DataNascimento, m.Telefone, m.Email, m.CPF,
                 m.TipoSanguineo, m.Especialidade, m.CRM, m.Cep, m.Logradouro, m.Bairro,
-                m.Localidade, m.Uf, m.Numero)).ToList();
+                m.Localidade, m.Uf, m.Numero, m.TenantId)).ToList();
             return medicoViewModel;
         }             
         public MedicoDetalhesViewModel GetById(int id)
@@ -101,7 +101,8 @@ namespace MediManage.Application.Services.Implementation
                inputModel.Bairro,
                inputModel.Localidade,
                inputModel.Uf,
-               inputModel.Numero);
+               inputModel.Numero,
+               inputModel.TanantId);
             _context.Medicos.Add( medico );
             _context.SaveChanges();
 

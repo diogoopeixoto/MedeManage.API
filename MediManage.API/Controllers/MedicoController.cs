@@ -17,10 +17,10 @@ namespace MediManage.API.Controllers
 
         // api/medico?query=net core
         [HttpGet]
-        [Authorize(Roles = "medico, medico")]
-            public IActionResult Get(string query)
+        //[Authorize(Roles = "medico")]
+            public IActionResult Get(string tenantId, string query)
             {
-                var medico = _medicoServices.GetAll(query);
+                var medico = _medicoServices.GetAll(tenantId, query);
 
                 return Ok(medico);
             }

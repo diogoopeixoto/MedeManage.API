@@ -39,7 +39,7 @@ namespace MediManage.Infrastructure.Auth
             }
         }
 
-        public string GenerateJwtToken(string email, string role)
+        public string GenerateJwtToken(string email, string tenantId, string role)
         {
             var issuer = _configuration["Jwt:Issuer"];
             var audience = _configuration["Jwt:Audience"];
@@ -49,8 +49,9 @@ namespace MediManage.Infrastructure.Auth
 
             var claims = new List<Claim>
             {
-                new Claim("userName", email),
-                new Claim(ClaimTypes.Role, role)
+                new Claim("userName", email),                
+                new Claim("tenantId", tenantId),
+                new Claim(ClaimTypes.Role, role),
             };
 
             var token = new JwtSecurityToken(

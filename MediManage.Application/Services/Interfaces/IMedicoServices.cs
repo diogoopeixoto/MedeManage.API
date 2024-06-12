@@ -10,7 +10,7 @@ namespace MediManage.Application.Services.Interfaces
 {
     public interface IMedicoServices
     {
-        List<MedicoViewModel> GetAll(string query);
+        List<MedicoViewModel> GetAll(string tenantId, string query);
         MedicoDetalhesViewModel GetById(int id);
         MedicoDetalhesViewModel GetByCPF(string cpf);
         int Create(NewMedicoImputModel inputModel);

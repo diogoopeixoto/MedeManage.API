@@ -19,9 +19,10 @@ namespace MediManage.Application.Services.Implementation
             _context = context;
         }
 
-        public async Task<User> GetByIdAsync(int id)
+        public async Task<User> GetByIdAsync(int id, string tenantId)
         {
-            return await _context.Users.SingleOrDefaultAsync(u => u.Id == id);
+            return await _context.Users
+                .SingleOrDefaultAsync(u => u.Id == id && u.TenantId == tenantId);
         }
 
         public async Task<User> GetUserByEmailAndPasswordAsync(string email, string passwordHash)

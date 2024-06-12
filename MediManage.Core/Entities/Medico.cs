@@ -10,7 +10,9 @@ namespace MediManage.Core.Entities
 {
     public class Medico : BaseEntity
     {
-        public Medico(string nome, string sobreNome, DateTime dataNascimento, string telefone, string email, string cPF, string tipoSanguineo, string especialidade, string cRM, StatusMedicoEnum status, string cep, string logradouro, string bairro, string localidade, string uf, string numero)
+        public Medico(string nome, string sobreNome, DateTime dataNascimento, string telefone, string email, string cPF, 
+            string tipoSanguineo, string especialidade, string cRM, StatusMedicoEnum status, string cep, string logradouro,
+            string bairro, string localidade, string uf, string numero, string tenantId)
         {
             Nome = nome;
             SobreNome = sobreNome;
@@ -28,6 +30,8 @@ namespace MediManage.Core.Entities
             Localidade = localidade;
             Uf = uf;
             Numero = numero;
+
+            TenantId = tenantId;
         }
 
         public string Nome { get; set; }
@@ -46,6 +50,7 @@ namespace MediManage.Core.Entities
         public string Localidade { get; set; }
         public string Uf { get; set; }
         public string Numero { get; set; }
+        public string TenantId { get; set; }
 
         public List<Atendimento>? Atendimentos { get; set;}
 

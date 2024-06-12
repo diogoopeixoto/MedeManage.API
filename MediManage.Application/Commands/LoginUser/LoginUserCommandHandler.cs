@@ -35,9 +35,9 @@ namespace MediManage.Application.Commands.LoginUser
             }
 
             // Se existir, gero o token usando os dados do usuário
-            var token = _authService.GenerateJwtToken(user.Email, user.Role);
+            var token = _authService.GenerateJwtToken(user.Email, user.TenantId, user.Role);
 
-            return new LoginUserViewModel(user.Email, token);
+            return new LoginUserViewModel(user.Email, user.TenantId, token);
         }
     }
 }

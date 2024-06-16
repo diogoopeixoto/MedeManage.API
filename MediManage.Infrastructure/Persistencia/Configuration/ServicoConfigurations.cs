@@ -33,7 +33,10 @@ namespace MediManage.Infrastructure.Persistence.Configurations
             builder
                 .Property(s => s.Duracao)
                 .IsRequired();
-
+            builder
+                .
+                Property(s => s.Status)
+                .IsRequired();
             builder
                 .HasMany(s => s.Atendimentos)
                 .WithOne(a => a.Servico)

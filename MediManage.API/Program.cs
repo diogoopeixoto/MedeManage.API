@@ -34,9 +34,6 @@ namespace MediManage.API
             //builder.Services.AddSingleton(mapper);
             //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            builder.Services.AddScoped<IPacienteServices, PacienteServices>();
-            builder.Services.AddScoped<IServicoServices, ServicoServices>();
-            builder.Services.AddScoped<IMedicoServices, MedicoServices>();
             builder.Services.AddScoped<IUserServices, UserServices>();
             builder.Services.AddScoped<IAuthService, AuthService>();
 

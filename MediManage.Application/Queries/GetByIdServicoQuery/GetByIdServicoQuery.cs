@@ -1,15 +1,22 @@
-﻿using MediManage.Core.Enum;
+﻿using MediatR;
+using MediManage.Application.ViewModels;
+using MediManage.Core.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MediManage.Application.ViewModels
+namespace MediManage.Application.Queries.GetByIdServicoQuery
 {
-    public class ServicoDetalhesViewModel
+    public class GetByIdServicoQuery : IRequest<ServicoDetalhesViewModel>
     {
-        public ServicoDetalhesViewModel(int id, string nome, string descricao, decimal valor, decimal? valorTotal, int duracao, ServicoStatusEnum status)
+        public GetByIdServicoQuery(int id)
+        {
+            Id = id;
+        }
+
+        public GetByIdServicoQuery(int id, string nome, string descricao, decimal valor, decimal? valorTotal, int duracao, ServicoStatusEnum status)
         {
             Id = id;
             Nome = nome;
@@ -29,3 +36,4 @@ namespace MediManage.Application.ViewModels
         public ServicoStatusEnum Status { get; set; }
     }
 }
+

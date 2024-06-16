@@ -1,5 +1,14 @@
-﻿using MediManage.Application.ImputModels;
+﻿using MediatR;
+using MediManage.Application.Commands.CriarMedico;
+using MediManage.Application.Commands.CriarPaciente;
+using MediManage.Application.Commands.DeletePaciente;
+using MediManage.Application.Commands.UpdateMedico;
+using MediManage.Application.ImputModels;
+using MediManage.Application.Queries.GetALLPacientesQuery;
+using MediManage.Application.Queries.GetByCPFMedicosQuery;
+using MediManage.Application.Queries.GetByCPFPacienteQuery;
 using MediManage.Application.Services.Interfaces;
+using MediManage.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MediManage.API.Controllers
@@ -7,19 +16,20 @@ namespace MediManage.API.Controllers
     [Route("api/paciente")]
     public class PacienteController : Controller
     {
-        private readonly IPacienteServices _pacienteServices;
-
-        public PacienteController(IPacienteServices pacienteServices)
+        private readonly IMediator _mediator;
+        public PacienteController(IMediator mediator)
         {
-            _pacienteServices = pacienteServices;
+            _mediator = mediator;
         }
 
 
         // api/paciente?query=net core
         [HttpGet]
-        public IActionResult Get(string query)
+        public async Task<IActionResult> Get(string query)
         {
-            var paciente = _pacienteServices.GetAll(query);
+            var getAllPaciente = new GetAllPacientesQuery(query);
+
+            var paciente = await _mediator.Send(getAllPaciente);
 
             return Ok(paciente);
         }
@@ -28,7 +38,9 @@ namespace MediManage.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var paciente = _pacienteServices.GetById(id);
+            var query = new GetByIdPacientreQuery(id);
+
+            var paciente = _mediator.Send(query);
 
             if (paciente == null)
             {
@@ -40,9 +52,12 @@ namespace MediManage.API.Controllers
 
         // api/paciente/
         [HttpGet("{cpf}/cpf")]
-        public IActionResult GetByCPF(string cpf)
+        public async Task<IActionResult> GetByCPF(string cpf)
         {
-            var paciente = _pacienteServices.GetByCPF(cpf);
+            var query = new GetByCPFMedicosQuery(cpf);
+
+            var paciente = await _mediator.Send(query);
+
 
             if (paciente == null)
             {
@@ -52,38 +67,40 @@ namespace MediManage.API.Controllers
             return Ok(paciente);
         }
 
-        [HttpPost]
-        public IActionResult Post([FromBody] NewPacienteImputModel inputModel)
+    [HttpPost]
+        public async Task<IActionResult> Post([FromBody] CriarPacienteCommand command)
         {
-            if (inputModel.Nome.Length > 150)
+            if (command.Nome.Length > 150)
             {
                 return BadRequest();
             }
 
-            var id = _pacienteServices.Create(inputModel);
+            var id = await _mediator.Send(command);
 
-            return CreatedAtAction(nameof(GetById), new { id = id }, inputModel);
+            return CreatedAtAction(nameof(GetById), new { id = id }, command);
         }
 
         // api/paciente/2
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] UpdatePacienteImputModel inputModel)
+        public async Task<IActionResult> Put(int id, [FromBody] UpdateMedicoCommand command)
          {
-            if (inputModel.Nome.Length > 200)
+            if (command.Nome.Length > 200)
             {
                 return BadRequest();
             }
 
-            _pacienteServices.Update(inputModel);
+            await _mediator.Send(command);
 
             return NoContent();
         }
 
         // api/paciente/3 DELETE
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            _pacienteServices.Delete(id);
+            var command = new DeletePacienteCommand(id);
+
+            await _mediator.Send(command);
 
             return NoContent();
         }

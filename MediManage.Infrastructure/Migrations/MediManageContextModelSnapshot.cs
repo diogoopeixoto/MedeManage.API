@@ -63,6 +63,66 @@ namespace MediManage.Infrastructure.Migrations
                     b.ToTable("Atendimentos");
                 });
 
+            modelBuilder.Entity("MediManage.Core.Entities.DiaDeAtendimento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Dia")
+                        .HasColumnType("int");
+
+                    b.Property<TimeSpan>("Fim")
+                        .HasColumnType("time");
+
+                    b.Property<TimeSpan>("Inicio")
+                        .HasColumnType("time");
+
+                    b.Property<TimeSpan>("Intervalo")
+                        .HasColumnType("time");
+
+                    b.Property<int>("MedicoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MedicoId");
+
+                    b.ToTable("DiasDeAtendimento");
+                });
+
+            modelBuilder.Entity("MediManage.Core.Entities.HorarioDisponivel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("EstaDisponivel")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("Fim")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdMedico")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Inicio")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("MedicoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MedicoId");
+
+                    b.ToTable("HorariosDisponiveis");
+                });
+
             modelBuilder.Entity("MediManage.Core.Entities.Medico", b =>
                 {
                     b.Property<int>("Id")
@@ -73,7 +133,8 @@ namespace MediManage.Infrastructure.Migrations
 
                     b.Property<string>("Bairro")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("CPF")
                         .IsRequired()
@@ -87,7 +148,8 @@ namespace MediManage.Infrastructure.Migrations
 
                     b.Property<string>("Cep")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
 
                     b.Property<DateTime>("DataNascimento")
                         .HasColumnType("datetime2");
@@ -104,25 +166,28 @@ namespace MediManage.Infrastructure.Migrations
 
                     b.Property<string>("Localidade")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Logradouro")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("Numero")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("SobreNome")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<byte>("Status")
                         .HasColumnType("tinyint");
@@ -132,6 +197,11 @@ namespace MediManage.Infrastructure.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<string>("TipoSanguineo")
                         .IsRequired()
                         .HasMaxLength(3)
@@ -139,7 +209,8 @@ namespace MediManage.Infrastructure.Migrations
 
                     b.Property<string>("Uf")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
 
                     b.HasKey("Id");
 
@@ -246,6 +317,9 @@ namespace MediManage.Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Valor")
                         .HasColumnType("decimal(18,2)");
 
@@ -290,6 +364,10 @@ namespace MediManage.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -322,9 +400,35 @@ namespace MediManage.Infrastructure.Migrations
                     b.Navigation("Servico");
                 });
 
+            modelBuilder.Entity("MediManage.Core.Entities.DiaDeAtendimento", b =>
+                {
+                    b.HasOne("MediManage.Core.Entities.Medico", "Medico")
+                        .WithMany("DiasDeAtendimento")
+                        .HasForeignKey("MedicoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Medico");
+                });
+
+            modelBuilder.Entity("MediManage.Core.Entities.HorarioDisponivel", b =>
+                {
+                    b.HasOne("MediManage.Core.Entities.Medico", "Medico")
+                        .WithMany("HorariosDisponiveis")
+                        .HasForeignKey("MedicoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Medico");
+                });
+
             modelBuilder.Entity("MediManage.Core.Entities.Medico", b =>
                 {
                     b.Navigation("Atendimentos");
+
+                    b.Navigation("DiasDeAtendimento");
+
+                    b.Navigation("HorariosDisponiveis");
                 });
 
             modelBuilder.Entity("MediManage.Core.Entities.Paciente", b =>

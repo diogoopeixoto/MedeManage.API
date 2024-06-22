@@ -2,24 +2,23 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace MediManage.Infrastructure.Persistence.Configurations
+namespace MediManage.Infrastructure.Persistencia.Configuration
 {
     public class MedicoConfigurations : IEntityTypeConfiguration<Medico>
     {
         public void Configure(EntityTypeBuilder<Medico> builder)
         {
-            builder
-                .HasKey(m => m.Id);
+            builder.HasKey(m => m.Id);
 
             builder
                 .Property(m => m.Nome)
                 .IsRequired()
-                .HasMaxLength(100);
+                .HasMaxLength(150);
 
             builder
                 .Property(m => m.SobreNome)
                 .IsRequired()
-                .HasMaxLength(100);
+                .HasMaxLength(150);
 
             builder
                 .Property(m => m.DataNascimento)
@@ -42,10 +41,6 @@ namespace MediManage.Infrastructure.Persistence.Configurations
                 .Property(m => m.TipoSanguineo)
                 .HasMaxLength(3);
 
-            //builder
-            //    .Property(m => m.Endereco)
-            //    .HasMaxLength(200);
-
             builder
                 .Property(m => m.Especialidade)
                 .IsRequired()
@@ -57,9 +52,38 @@ namespace MediManage.Infrastructure.Persistence.Configurations
                 .HasMaxLength(20);
 
             builder
-                .HasMany(m => m.Atendimentos)
-                .WithOne(a => a.Medico)
-                .HasForeignKey(a => a.IdMedico);
+                .Property(m => m.Status)
+                .IsRequired();
+
+            builder
+                .Property(m => m.Cep)
+                .HasMaxLength(8);
+
+            builder
+                .Property(m => m.Logradouro)
+                .HasMaxLength(150);
+
+            builder
+                .Property(m => m.Bairro)
+                .HasMaxLength(100);
+
+            builder
+                .Property(m => m.Localidade)
+                .HasMaxLength(100);
+
+            builder
+                .Property(m => m.Uf)
+                .HasMaxLength(2);
+
+            builder
+                .Property(m => m.Numero)
+                .HasMaxLength(10);
+
+            builder
+                .Property(m => m.TenantId)
+                .HasMaxLength(50);
+
+            
         }
     }
 }

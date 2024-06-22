@@ -22,7 +22,7 @@ namespace MediManage.Application.Commands.LoginUser
 
         public async Task<LoginUserViewModel> Handle(LoginUserCommand request, CancellationToken cancellationToken)
         {
-            // Utilizar o mesmo algoritmo para criar o hash dessa senha
+            
             var passwordHash = _authService.ComputeSha256Hash(request.Password);
 
             // Buscar no meu banco de dados um User que tenha meu e-mail e minha senha em formato hash

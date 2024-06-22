@@ -19,7 +19,7 @@ namespace MediManage.Infrastructure.Auth
         {
             _configuration = configuration;
         }
-
+        //Criptografar a senha para salvar no banco
         public string ComputeSha256Hash(string password)
         {
             using (SHA256 sha256Hash = SHA256.Create())

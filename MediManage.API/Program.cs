@@ -1,15 +1,11 @@
-using AutoMapper;
-using FluentAssertions.Common;
 using MediManage.Application.Commands.CriateUser;
 using MediManage.Application.Services.Implementation;
 using MediManage.Application.Services.Interfaces;
-using MediManage.Core.Entities;
 using MediManage.Core.Services;
 using MediManage.Infrastructure.Auth;
 using MediManage.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -36,6 +32,8 @@ namespace MediManage.API
 
             builder.Services.AddScoped<IUserServices, UserServices>();
             builder.Services.AddScoped<IAuthService, AuthService>();
+            builder.Services.AddScoped<IWhatsAppService, WhatsAppService>();
+
 
             // Registrando o MediatR
             builder.Services.AddMediatR(cfg => {
